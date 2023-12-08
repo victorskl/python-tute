@@ -5,9 +5,8 @@ https://medium.com/swlh/higher-order-functions-in-python-map-filter-and-reduce-3
 from functools import reduce
 from operator import add, mul
 
-if __name__ == '__main__':
-    # --- Map
 
+def map_1():
     # Declare a list to be mapped
     seasons = ['spring', 'summer', 'fall', 'winter']
 
@@ -25,12 +24,12 @@ if __name__ == '__main__':
     print(upper_seasons)
 
 
+def map_2():
     # Declare a function to calculate the difference between predicted and actual target values
     def squared_difference(x, y):
         predicted_y = 3 * x + 5
         difference = predicted_y - y
         return difference * difference
-
 
     # Create the x and y values
     x_values = [2, 3, 4, 7]
@@ -40,8 +39,8 @@ if __name__ == '__main__':
     differences = list(map(squared_difference, x_values, y_values))
     print(differences)
 
-    # --- Filter
 
+def filter_1():
     # Declare a list for filtering
     integers = [1, 2, 3, 4, 5, 6, 7]
 
@@ -53,6 +52,8 @@ if __name__ == '__main__':
     even_numbers = list(filtered_integers)
     print(even_numbers)
 
+
+def filter_2():
     # Declare a list for filtering
     students = {
         'Aaron': {'phys': 95, 'chem': 80, 'math': 92},
@@ -62,7 +63,6 @@ if __name__ == '__main__':
         'Zack': {'phys': 97, 'chem': 86, 'math': 93}
     }
 
-
     # Define a function for filtering
     def qualify_student(x):
         _, info = x
@@ -71,13 +71,12 @@ if __name__ == '__main__':
         condition2 = info['math'] > 90
         return condition0 and condition1 and condition2
 
-
     # Create a dict of qualified students
     qualified_students = dict(filter(qualify_student, students.items()))
     print(qualified_students)
 
-    # --- Reduce
 
+def reduce_1():
     # Create a list for reducing
     primes = [2, 3, 5, 7, 11, 13]
 
@@ -89,6 +88,7 @@ if __name__ == '__main__':
     print(total)
 
 
+def reduce_2():
     def factorial(n):
         """
         See https://www.mathsisfun.com/numbers/factorial.html
@@ -100,7 +100,6 @@ if __name__ == '__main__':
         """
         return 1 if n < 2 else reduce(lambda x, y: x * y, range(1, n + 1))
 
-
     factorials = [factorial(x) for x in range(10)]
     print(factorials)
 
@@ -111,3 +110,22 @@ if __name__ == '__main__':
 
     print(reduce(lambda x, y: x * y, [1, 2, 3]))
     print(reduce(mul, [1, 2, 3]))
+
+
+if __name__ == '__main__':
+    # --- Map
+    map_1()
+    print("-" * 32)
+    map_2()
+    print("-" * 32)
+
+    # --- Filter
+    filter_1()
+    print("-" * 32)
+    filter_2()
+    print("-" * 32)
+
+    # --- Reduce
+    reduce_1()
+    print("-" * 32)
+    reduce_2()
